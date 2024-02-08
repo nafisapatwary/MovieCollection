@@ -2,7 +2,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Scanner;
 
@@ -90,8 +89,7 @@ public class MovieCollection
     }
 
     //uses option to call associated method
-    private void processOption(String option)
-    {
+    private void processOption(String option) {
         if (option.equals("t")) {
             searchTitles();
         }
@@ -167,8 +165,7 @@ public class MovieCollection
         }
     }
 
-    private void displayMovieInfo(Movie movie)
-    {
+    private void displayMovieInfo(Movie movie) {
         System.out.println();
         System.out.println("Title: " + movie.getTitle());
         System.out.println("Tagline: " + movie.getTagline());
@@ -194,8 +191,7 @@ public class MovieCollection
         }
         //sort alphabetically
         results.sort(Comparator.naturalOrder());
-        for (int i = 0; i < results.size(); i++)
-        {
+        for (int i = 0; i < results.size(); i++) {
             System.out.println((i + 1) + ". " + results.get(i));
         }
         System.out.println("Which actor/actress would you like to learn more about?");
@@ -204,17 +200,14 @@ public class MovieCollection
         scanner.nextLine();
         ArrayList<Movie> toSort = new ArrayList<Movie>();
         int count = 1;
-        for (Movie movie: movies)
-        {
-            if (movie.getCast().contains(results.get(choice - 1)))
-            {
+        for (Movie movie: movies) {
+            if (movie.getCast().contains(results.get(choice - 1))) {
                 toSort.add(movie);
             }
         }
         //sorting results
         sortResults(toSort);
-        for (Movie movie: toSort)
-        {
+        for (Movie movie: toSort) {
             System.out.println(count + ". " + movie.getTitle());
             count++;
         }
@@ -240,7 +233,7 @@ public class MovieCollection
             movieKeywords = movieKeywords.toLowerCase();
             //searches for term in all titles
             if (movieKeywords.indexOf(searchTerm) != -1) {
-                //add the Movie objest to the results list
+                //add the Movie object to the results list
                 results.add(movies.get(i));
             }
         }
@@ -249,10 +242,8 @@ public class MovieCollection
         // now, display them all to the user
         for (int i = 0; i < results.size(); i++) {
             String title = results.get(i).getTitle();
-
             // this will print index 0 as choice 1 in the results list; better for user!
             int choiceNum = i + 1;
-
             System.out.println("" + choiceNum + ". " + title);
         }
         System.out.println("Which movie would you like to learn more about?");
